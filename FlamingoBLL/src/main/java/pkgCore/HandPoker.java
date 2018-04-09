@@ -35,6 +35,11 @@ public class HandPoker extends Hand implements Comparable {
 	public HandScorePoker getHandScorePoker() {
 		return (HandScorePoker) this.getHS();
 	}
+	
+	public HandScorePoker getHSP() {
+		return (HandScorePoker) this.getHS();
+
+	}
 
 	@Override
 	public HandScore ScoreHand() throws HandException {
