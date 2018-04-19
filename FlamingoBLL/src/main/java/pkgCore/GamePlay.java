@@ -10,6 +10,7 @@ public abstract class GamePlay {
 
 	private eGameType eGameType;
 	private HashMap<UUID, Player> hmGamePlayers = new HashMap<UUID,Player>();
+	private Table t; 
 	
 	public GamePlay(eGameType eGameType)
 	{
@@ -19,15 +20,33 @@ public abstract class GamePlay {
 	
 	protected void AddPlayersToGame(ArrayList<Player> Players)
 	{
-		//TODO: Implement this method
+	
+		for (Player p: Players)
+		{
+			hmGamePlayers.put(p.getPlayerID(), p);
+		}
+
 	}
 	protected void RemovePlayerFromGame(Player p)
 	{
-		//TODO: Implement this method		
+		hmGamePlayers.remove(p.getPlayerID());
 	}
 	protected Player GetPlayerInGame(Player p)
 	{
-		//TODO: Implement this method	
-		return null;
+		return hmGamePlayers.get(p.getPlayerID());
 	}
+	
+	protected ArrayList<Player> GetPlayersInGame()
+	{
+		return new ArrayList<Player> (hmGamePlayers.values());
+	}
+
+	public Table getT() {
+		return t;
+	}
+
+	public void setT(Table t) {
+		this.t = t;
+	}
+	
 }

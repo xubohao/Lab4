@@ -1,35 +1,59 @@
 package pkgCore;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
-public class Table {
+import pkgEnum.eGameType;
+
+public class Table implements Serializable {
 
 	private UUID TableID;
-	private HashMap<UUID, Player> hmTablePlayers = new HashMap<UUID,Player>();
+	private HashMap<UUID, Player> hmTablePlayers = new HashMap<UUID, Player>();
+
+	private Deck TableDeck;
 	
 	public Table() {
 		super();
 		this.TableID = UUID.randomUUID();
 	}
 	
-	public void AddPlayerToTable(Player p)
+	protected void CreateDeck(eGameType eGT)
 	{
-		//TODO: Implement this method
+		switch (eGT)
+		{
+		case BLACKJACK:
+			TableDeck = new Deck(6);
+		case POKER:
+			TableDeck = new Deck();
+		}
+			
 	}
-	public void RemovePlayerFromTable(Player p)
-	{
-		//TODO: Implement this method		
+
+	public void AddPlayerToTable(Player p) {
+
+			hmTablePlayers.put(p.getPlayerID(), p);
 	}
-	
-	public Player GetPlayerFromTable(Player p)
-	{
-		//TODO: Implement this method	
-		return null;
+
+	public void RemovePlayerFromTable(Player p) {
+		hmTablePlayers.remove(p.getPlayerID());
+
 	}
-	public void ClearTable()
-	{
-		//TODO: Implement this method	
+
+	public Player GetPlayerFromTable(Player p) {
+		return hmTablePlayers.get(p.getPlayerID());
+
+	}
+
+	public void ClearTable() {
+		hmTablePlayers.clear();
+		
+	}
+
+	public ArrayList<Player> GetTable() {
+		
+		return new ArrayList<Player> (hmTablePlayers.values());
 	}
 }
