@@ -26,8 +26,10 @@ public class Table implements Serializable {
 		{
 		case BLACKJACK:
 			TableDeck = new Deck(6);
+			break;
 		case POKER:
 			TableDeck = new Deck();
+			break;
 		}
 			
 	}
@@ -52,8 +54,13 @@ public class Table implements Serializable {
 		
 	}
 
-	public ArrayList<Player> GetTable() {
+	public ArrayList<Player> GetTablePlayers() {
 		
 		return new ArrayList<Player> (hmTablePlayers.values());
 	}
+
+	public Deck getTableDeck() {
+		return TableDeck;
+	}
+	
 }

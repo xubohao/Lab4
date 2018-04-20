@@ -12,9 +12,11 @@ public abstract class GamePlay {
 	private HashMap<UUID, Player> hmGamePlayers = new HashMap<UUID,Player>();
 	private Table t; 
 	
-	public GamePlay(eGameType eGameType)
+	public GamePlay(Table t, eGameType eGameType)
 	{
 		super();
+		this.t= t;
+		this.AddPlayersToGame(t.GetTablePlayers());
 		this.eGameType = eGameType;
 	}
 	
