@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import app.Flamingo;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import pkgCore.GamePlay;
 import pkgCore.Table;
@@ -26,6 +27,7 @@ public class BlackJackController implements Initializable {
 		//TODO: Implement this.  Create a new 'Action', send the 'Sit' or 'Leave' action to the Hub.
 		
 	}
+	
 	public void HandleTableState(Table t) {
 
 		//TODO: Implement this.
